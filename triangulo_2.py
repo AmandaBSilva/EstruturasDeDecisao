@@ -1,16 +1,21 @@
 from numpy import arccos
 from math import degrees
 
-m1 = float(input("Insira a primeira medida: "))
-m2 = float(input("Insira a segunda medida: "))
-m3 = float(input("Insira a terceira medida: "))
+a = float(input("Insira a primeira medida: "))
+b = float(input("Insira a segunda medida: "))
+c = float(input("Insira a terceira medida: "))
 
-medidas = {m1, m2, m3}
+medidas = {a, b, c}
+
+# Regra dos cossenos:
+# a² = b² + c² - 2*b*c*cos(α)
+# b² = a² + c² - 2*a*c*cos(β)
+# c² = a² + b² - 2*a*b*cos(θ)
 
 cossenos = [
-    (m1**2 - m2**2 - m3**2)/(-2*m2*m3),
-    (m2**2 - m1**2 - m3**2)/(-2*m1*m3),
-    (m3**2 - m1**2 - m2**2)/(-2*m1*m2)
+    (a**2 - b**2 - c**2)/(-2*b*c),  # (a² - b² - c²)/(-2*b*c) = cos(α)
+    (b**2 - a**2 - c**2)/(-2*a*c),  # (b² - a² - c²)/(-2*a*c) = cos(β)
+    (c**2 - a**2 - b**2)/(-2*a*b)  # (c² - a² - b²)/(-2*a*b) = cos(θ)
 ]
 
 angulos = [degrees(x) for x in arccos(cossenos)]
